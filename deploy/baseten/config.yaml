@@ -1,0 +1,55 @@
+# Baseten deployment of Qwen2.5-7B-Instruct served by vLLM ("custom Docker server" path).
+# Verified against docs.baseten.co on 2026-10-29. See deploy/baseten/README.md.
+#
+# Why this shape: Baseten's current LLM guidance is config-only. vLLM runs as the
+# container's own server (docker_server); Baseten's proxy fronts it. The weights
+# block uses the Baseten Delivery Network (BDN) to mirror + mount weights BEFORE the
+# container starts, which is the cold-start optimisation their blog post describes.
+
+model_name: qwen25-7b-vllm
+model_metadata:
+  tags:
+    - openai-compatible
+  example_model_input:
+    model: Qwen/Qwen2.5-7B-Instruct
+    messages:
+      - role: user
+        content: "Explain continuous batching in two sentences."
+    max_tokens: 128
+
+base_image:
+  image: vllm/vllm-openai:v0.29.0          # pin a tag; ':latest' gets cached and goes stale
+
+docker_server:
+  start_command: >-
+    vllm serve /models/qwen
+    --served-model-name Qwen/Qwen2.5-7B-Instruct
+    --host 0.0.0.0 --port 8000
+    --max-model-len 8192
+    --max-num-seqs 128
+    --gpu-memory-utilization 0.90
+    --enable-prefix-caching
+    --enable-chunked-prefill
+  readiness_endpoint: /health
+  liveness_endpoint: /health
+  predict_endpoint: /v1/chat/completions
+  server_port: 8000                        # 8080 is reserved by Baseten's proxy
+
+weights:
+  - source: "hf://Qwen/Qwen2.5-7B-Instruct"   # pin "@<commit>" in prod
+    mount_location: "/models/qwen"
+    # Qwen2.5 is not gated; uncomment for Llama (gated) and create the secret in
+    # https://app.baseten.co/settings/secrets named hf_access_token
+    # auth:
+    #   auth_method: CUSTOM_SECRET
+    #   auth_secret_name: "hf_access_token"
+
+resources:
+  accelerator: H100        # try L4 or A10G for the cheap point on the frontier
+  use_gpu: true
+
+runtime:
+  predict_concurrency: 128   # must be >= the autoscaler's concurrency_target
+  health_checks:
+    restart_threshold_seconds: 300
+    stop_traffic_threshold_seconds: 120

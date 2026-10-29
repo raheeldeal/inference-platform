@@ -1,0 +1,38 @@
+# Router config. Reloaded only at start; everything here can also be changed live
+# through /admin/* so you can practice canary/drain without restarts.
+listen: 127.0.0.1:8000
+
+# weighted | least_inflight | prefix_affinity
+#   weighted        — classic weighted random. Canary = 5/95 weights.
+#   least_inflight  — pick the eligible backend with the fewest in-flight requests
+#                     (weight-normalised). Best p99 when backends differ in speed.
+#   prefix_affinity — hash the first 64 chars of the prompt so the same system
+#                     prompt lands on the same backend: that's how you make
+#                     vLLM's prefix caching actually hit behind a load balancer.
+policy: weighted
+
+health:
+  interval_s: 1.0
+  timeout_s: 1.0
+  unhealthy_after: 2     # consecutive failed checks before we stop routing to it
+  healthy_after: 2       # consecutive passes before we route to it again
+
+retry:
+  max_attempts: 3        # total attempts across backends for one client request
+  retry_on_status: [500, 502, 503, 504]
+  connect_timeout_s: 2.0
+  ttft_timeout_s: 30.0   # time allowed for the upstream to send response headers
+  stream_timeout_s: 120.0
+
+backends:
+  - name: h100
+    url: http://127.0.0.1:8001
+    weight: 95
+    stage: stable
+  - name: a10g
+    url: http://127.0.0.1:8002
+    weight: 5
+    stage: canary
+  # - name: shadow-new-build
+  #   url: http://127.0.0.1:8003
+  #   shadow: true          # receives a copy of every request; response discarded

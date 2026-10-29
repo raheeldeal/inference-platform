@@ -1,0 +1,34 @@
+{
+  "url": "http://127.0.0.1:8000",
+  "prompt_words": 120,
+  "max_tokens": 64,
+  "stream": true,
+  "levels": [
+    {
+      "concurrency": 24,
+      "requests": 600,
+      "errors": 17,
+      "error_rate": 0.028333333333333332,
+      "wall_s": 34.340760957915336,
+      "throughput_tps": 1086.522224878066,
+      "rps": 16.97690976371978,
+      "ttft_p50": 165.02983402460814,
+      "ttft_p99": 376.8319904524831,
+      "lat_p50": 1321.1381658911705,
+      "lat_p95": 1362.5097920186818,
+      "lat_p99": 3413.5332865919904,
+      "per_req_tps_p50": 55.04379349738786,
+      "error_kinds": [
+        "mid-stream"
+      ],
+      "backends": {
+        "a10g-v2": 23,
+        "a10g": 20,
+        "h100": 557
+      },
+      "price_per_hour": 0.0,
+      "usd_per_1m_tokens": 0.0,
+      "label": "127.0.0.1"
+    }
+  ]
+}

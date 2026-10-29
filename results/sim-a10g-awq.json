@@ -1,0 +1,184 @@
+{
+  "url": "http://127.0.0.1:8003",
+  "prompt_words": 120,
+  "max_tokens": 128,
+  "stream": true,
+  "levels": [
+    {
+      "concurrency": 1,
+      "requests": 16,
+      "errors": 0,
+      "error_rate": 0.0,
+      "wall_s": 41.449475874658674,
+      "throughput_tps": 49.4095511893337,
+      "rps": 0.3860121186666695,
+      "ttft_p50": 82.91531191207469,
+      "ttft_p99": 87.84466884098947,
+      "lat_p50": 2587.9053336102515,
+      "lat_p95": 2612.2459166217595,
+      "lat_p99": 2618.2390159461647,
+      "per_req_tps_p50": 50.70031557825303,
+      "error_kinds": [],
+      "backends": {
+        "a10g-awq": 16
+      },
+      "price_per_hour": 1.0,
+      "usd_per_1m_tokens": 5.621944969978661,
+      "label": "a10g-awq-sim"
+    },
+    {
+      "concurrency": 2,
+      "requests": 16,
+      "errors": 0,
+      "error_rate": 0.0,
+      "wall_s": 21.85323983291164,
+      "throughput_tps": 93.71608126112496,
+      "rps": 0.7321568848525387,
+      "ttft_p50": 141.15970791317523,
+      "ttft_p99": 162.83820618409663,
+      "lat_p50": 2729.1887290775776,
+      "lat_p95": 2749.4778226828203,
+      "lat_p99": 2750.765297259204,
+      "per_req_tps_p50": 48.929225460194814,
+      "error_kinds": [],
+      "backends": {
+        "a10g-awq": 16
+      },
+      "price_per_hour": 1.0,
+      "usd_per_1m_tokens": 2.9640353506010797,
+      "label": "a10g-awq-sim"
+    },
+    {
+      "concurrency": 4,
+      "requests": 16,
+      "errors": 0,
+      "error_rate": 0.0,
+      "wall_s": 12.059072041884065,
+      "throughput_tps": 169.8306464118302,
+      "rps": 1.3268019250924235,
+      "ttft_p50": 277.20031258650124,
+      "ttft_p99": 284.80007518082857,
+      "lat_p50": 3006.1525211203843,
+      "lat_p95": 3032.5698329834267,
+      "lat_p99": 3033.2694332813844,
+      "per_req_tps_p50": 46.38975371616988,
+      "error_kinds": [],
+      "backends": {
+        "a10g-awq": 16
+      },
+      "price_per_hour": 1.0,
+      "usd_per_1m_tokens": 1.6356163251253344,
+      "label": "a10g-awq-sim"
+    },
+    {
+      "concurrency": 8,
+      "requests": 32,
+      "errors": 0,
+      "error_rate": 0.0,
+      "wall_s": 14.226848000194877,
+      "throughput_tps": 287.90635845296816,
+      "rps": 2.2492684254138138,
+      "ttft_p50": 534.2671456746757,
+      "ttft_p99": 539.312732219696,
+      "lat_p50": 3555.147624341771,
+      "lat_p95": 3579.5462084002793,
+      "lat_p99": 3579.6489612478763,
+      "per_req_tps_p50": 41.89377559402826,
+      "error_kinds": [],
+      "backends": {
+        "a10g-awq": 32
+      },
+      "price_per_hour": 1.0,
+      "usd_per_1m_tokens": 0.9648198784854384,
+      "label": "a10g-awq-sim"
+    },
+    {
+      "concurrency": 16,
+      "requests": 64,
+      "errors": 0,
+      "error_rate": 0.0,
+      "wall_s": 18.505288999993354,
+      "throughput_tps": 442.68425097294846,
+      "rps": 3.45847071072616,
+      "ttft_p50": 965.0209795217961,
+      "ttft_p99": 1037.722067865543,
+      "lat_p50": 4611.647791462019,
+      "lat_p95": 4683.181160967797,
+      "lat_p99": 4684.80595077388,
+      "per_req_tps_p50": 34.78763059316528,
+      "error_kinds": [],
+      "backends": {
+        "a10g-awq": 64
+      },
+      "price_per_hour": 1.0,
+      "usd_per_1m_tokens": 0.6274851142033336,
+      "label": "a10g-awq-sim"
+    },
+    {
+      "concurrency": 32,
+      "requests": 128,
+      "errors": 0,
+      "error_rate": 0.0,
+      "wall_s": 26.80439033312723,
+      "throughput_tps": 611.2431507069649,
+      "rps": 4.775337114898163,
+      "ttft_p50": 1923.9674997515976,
+      "ttft_p99": 2018.1104099052027,
+      "lat_p50": 6679.6129795257,
+      "lat_p95": 6759.747454687022,
+      "lat_p99": 6760.870510097593,
+      "per_req_tps_p50": 26.710357967514042,
+      "error_kinds": [],
+      "backends": {
+        "a10g-awq": 128
+      },
+      "price_per_hour": 1.0,
+      "usd_per_1m_tokens": 0.45444726449122497,
+      "label": "a10g-awq-sim"
+    },
+    {
+      "concurrency": 64,
+      "requests": 256,
+      "errors": 0,
+      "error_rate": 0.0,
+      "wall_s": 43.22007125010714,
+      "throughput_tps": 758.1662651682642,
+      "rps": 5.923173946627064,
+      "ttft_p50": 3741.9692291878164,
+      "ttft_p99": 3967.947009927593,
+      "lat_p50": 10810.930583393201,
+      "lat_p95": 10936.022082925774,
+      "lat_p99": 10936.12520385068,
+      "per_req_tps_p50": 18.14301137402005,
+      "error_kinds": [],
+      "backends": {
+        "a10g-awq": 256
+      },
+      "price_per_hour": 1.0,
+      "usd_per_1m_tokens": 0.3663810835953364,
+      "label": "a10g-awq-sim"
+    },
+    {
+      "concurrency": 128,
+      "requests": 512,
+      "errors": 0,
+      "error_rate": 0.0,
+      "wall_s": 75.8649946670048,
+      "throughput_tps": 863.8503210559496,
+      "rps": 6.748830633249606,
+      "ttft_p50": 7635.402313200757,
+      "ttft_p99": 7742.383461683057,
+      "lat_p50": 19019.667979329824,
+      "lat_p95": 19082.291829562746,
+      "lat_p99": 19083.820311385207,
+      "per_req_tps_p50": 11.163029494063785,
+      "error_kinds": [],
+      "backends": {
+        "a10g-awq": 512
+      },
+      "price_per_hour": 1.0,
+      "usd_per_1m_tokens": 0.3215577641254205,
+      "label": "a10g-awq-sim"
+    }
+  ]
+}
